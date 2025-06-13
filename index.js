@@ -18,13 +18,13 @@
 // app.use(cors());
 // app.use(express.json());
 
-// // Routes
-// app.use('/api/auth', authRoutes);
+// // // Routes
+// // app.use('/api/auth', authRoutes);
 
-// // Root route
-// app.get('/', (req, res) => {
-//   res.send('Welcome to the MindWave backend API!');
-// });
+// // // Root route
+// // app.get('/', (req, res) => {
+// //   res.send('Welcome to the MindWave backend API!');
+// // });
 
 // // Start server
 // app.listen(PORT, () => {
