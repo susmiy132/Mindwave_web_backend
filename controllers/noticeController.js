@@ -44,13 +44,13 @@ exports.updateNotice = async (req, res) => {
   }
 };
 
-// // DELETE
-// exports.deleteNotice = async (req, res) => {
-//   try {
-//     const notice = await Notice.findByIdAndDelete(req.params.id);
-//     if (!notice) return res.status(404).json({ message: 'Notice not found' });
-//     res.status(200).json({ message: 'Notice deleted' });
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
+// DELETE
+exports.deleteNotice = async (req, res) => {
+  try {
+    const notice = await Notice.findByIdAndDelete(req.params.id);
+    if (!notice) return res.status(404).json({ message: 'Notice not found' });
+    res.status(200).json({ message: 'Notice deleted' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
