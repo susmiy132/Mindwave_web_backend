@@ -151,34 +151,34 @@ const transporter = nodemailer.createTransport(
   }
 )
 
-// exports.sendResetLink = async = async (req, res) => {
-//     const { email } = req.body
-//     try{
-//         const user = await User.findOne({email})
-//         if(!user) return res.status(404).json({success: false, message: "User not found"})
-//         const token = jwt.sign({id:user._id}, process.env.SECRET, {expiresIn: "15m"})
-//         const resetUrl = process.env.CLIENT_URL + "/reset/password" + token
-//         const mailOptions = {
-//             from:`"MindWave" <${process.env.EMAIL_USER}>`,
-//             to: email,
-//             subject: "Reset you password",
-//             html:`<p>Reset your password..${resetUrl}<p/>`
-//         }
-//         transporter.sendMail(mailOptions, (err, info) => {
-//         if (err) {
-//             console.log(err)
-//             return res.status(403).json({ success: false, message: "Failed"})
+exports.sendResetLink = async = async (req, res) => {
+    const { email } = req.body
+    try{
+        const user = await User.findOne({email})
+        if(!user) return res.status(404).json({success: false, message: "User not found"})
+        const token = jwt.sign({id:user._id}, process.env.SECRET, {expiresIn: "15m"})
+        const resetUrl = process.env.CLIENT_URL + "/reset/password" + token
+        const mailOptions = {
+            from:`"MindWave" <${process.env.EMAIL_USER}>`,
+            to: email,
+            subject: "Reset you password",
+            html:`<p>Reset your password..${resetUrl}<p/>`
+        }
+        transporter.sendMail(mailOptions, (err, info) => {
+        if (err) {
+            console.log(err)
+            return res.status(403).json({ success: false, message: "Failed"})
 
-//         }
-//         if(info) console.log(info)
-//         return res.status(200).json({ success: true, message: "Success" })
-//     })
-//     }
-//     catch(err){
-//         console.log(err)
-//         return res.status(500).json({success: false, message: "server error"})
-//     }
-// }
+        }
+        if(info) console.log(info)
+        return res.status(200).json({ success: true, message: "Success" })
+    })
+    }
+    catch(err){
+        console.log(err)
+        return res.status(500).json({success: false, message: "server error"})
+    }
+}
 
 // exports.resetPassword = async (req, res) => {
 //     const { token } = req.params
