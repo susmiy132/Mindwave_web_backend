@@ -44,12 +44,12 @@ exports.createMood = async (req, res) => {
   }
 };
 
-// exports.getMoods = async (req, res) => {
-//   try {
-//     const moods = await Mood.find({ user: req.user ? req.user.id : undefined }).sort({ createdAt: -1 });
-//     res.status(200).json(moods);
-//   } catch (err) {
-//     res.status(500).json({ message: "Failed to get moods" });
-//   }
-// };
+exports.getMoods = async (req, res) => {
+  try {
+    const moods = await Mood.find({ user: req.user ? req.user.id : undefined }).sort({ createdAt: -1 });
+    res.status(200).json(moods);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to get moods" });
+  }
+};
 
