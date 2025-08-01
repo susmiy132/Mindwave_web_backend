@@ -1,5 +1,5 @@
 const { app, request, tokenHolder } = require("./setup");
-const Journal = require("../models/journal");
+const Journal = require("../models/Journal");
 
 describe("Journal API", () => {
   let journalId;
