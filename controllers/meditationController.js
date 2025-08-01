@@ -227,36 +227,36 @@ const updateMeditation = async (req, res) => {
   }
 };
 
-// // Delete meditation by ID
-// const deleteMeditation = async (req, res) => {
-//   try {
-//     const meditation = await Meditation.findById(req.params.id);
-//     if (!meditation) {
-//       return res.status(404).json({ success: false, message: "Meditation not found" });
-//     }
+// Delete meditation by ID
+const deleteMeditation = async (req, res) => {
+  try {
+    const meditation = await Meditation.findById(req.params.id);
+    if (!meditation) {
+      return res.status(404).json({ success: false, message: "Meditation not found" });
+    }
 
-//      // Optionally check if user owns this meditation before deleting
-//     if (meditation.user.toString() !== req.user.id) {
-//       return res.status(403).json({ success: false, message: "Not authorized" });
-//     }
+     // Optionally check if user owns this meditation before deleting
+    if (meditation.user.toString() !== req.user.id) {
+      return res.status(403).json({ success: false, message: "Not authorized" });
+    }
 
 
-//     if (meditation.image) {
-//       const imagePath = path.join(__dirname, "../uploads/", meditation.image);
-//       if (fs.existsSync(imagePath)) {
-//         fs.unlinkSync(imagePath);
-//       }
-//     }
+    if (meditation.image) {
+      const imagePath = path.join(__dirname, "../uploads/", meditation.image);
+      if (fs.existsSync(imagePath)) {
+        fs.unlinkSync(imagePath);
+      }
+    }
 
-//     await meditation.remove();
+    await meditation.remove();
 
-//     res.status(200).json({ success: true, message: "Meditation deleted successfully" });
-//     // res.json({ success: true, message: "Meditation deleted successfully" });
-//   } catch (error) {
-//     res.status(200).json({ success: true, message: "Meditation deleted successfully" });
-//     res.status(500).json({ success: false, message: error.message });
-//   }
-// };
+    res.status(200).json({ success: true, message: "Meditation deleted successfully" });
+    // res.json({ success: true, message: "Meditation deleted successfully" });
+  } catch (error) {
+    res.status(200).json({ success: true, message: "Meditation deleted successfully" });
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
 
 // module.exports = {
 //   createMeditation,
