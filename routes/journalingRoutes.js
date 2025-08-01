@@ -21,10 +21,10 @@ router.get("/", auth, getAllJournals);
 // Get journal by id (public)
 router.get("/:id", getJournalById);
 
-// // Update journal (auth required, optional image upload)
-// router.put("/:id", auth, upload.single("image"), updateJournal);
+// Update journal (auth required, optional image upload)
+router.put("/:id", auth, upload.single("image"), updateJournal);
 
-// // Delete journal (auth required)
+// Delete journal (auth required)
 // router.delete("/:id", auth, deleteJournal);
 
 module.exports = router;
