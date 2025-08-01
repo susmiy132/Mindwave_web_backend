@@ -10,7 +10,7 @@ router.get("/me", authMiddleware, (req, res) => {
   res.status(200).json(req.user); // send back the authenticated user's data
 });
 // POST /api/auth/register
-// router.post('/register', authController.register);
+router.post('/register', authController.register);
 
 // POST /api/auth/login
 // router.post('/login', authController.login);
