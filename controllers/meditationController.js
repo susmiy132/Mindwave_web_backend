@@ -153,21 +153,21 @@ const createMeditation = async (req, res) => {
   }
 };
 
-// // Get all meditations
-// const getAllMeditations = async (req, res) => {
-//   try {
-//     const meditations = await Meditation.find().sort({ createdAt: -1 });
+// Get all meditations
+const getAllMeditations = async (req, res) => {
+  try {
+    const meditations = await Meditation.find().sort({ createdAt: -1 });
 
-//     const updatedMeditations = meditations.map((med) => ({
-//       ...med._doc,
-//       image: med.image ? `${req.protocol}://${req.get("host")}/uploads/${med.image}` : null,
-//     }));
+    const updatedMeditations = meditations.map((med) => ({
+      ...med._doc,
+      image: med.image ? `${req.protocol}://${req.get("host")}/uploads/${med.image}` : null,
+    }));
 
-//     res.json({ success: true, data: updatedMeditations });
-//   } catch (error) {
-//     res.status(500).json({ success: false, message: error.message });
-//   }
-// };
+    res.json({ success: true, data: updatedMeditations });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
 
 // // Get meditation by ID
 // const getMeditationById = async (req, res) => {
