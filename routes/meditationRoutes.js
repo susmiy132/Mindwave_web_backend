@@ -20,7 +20,7 @@ router.post("/", authMiddleware, upload.single("image"), createMeditation);
 router.get("/", getAllMeditations);
 
 // // Get meditation by id (public)
-// router.get("/:id", getMeditationById);
+router.get("/:id", getMeditationById);
 
 // // Update meditation (auth required, single image upload)
 // router.put("/:id", authMiddleware, upload.single("image"), updateMeditation);
