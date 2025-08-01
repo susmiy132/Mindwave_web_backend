@@ -1,125 +1,125 @@
-// // const Meditation = require("../models/Meditation");
-// // const path = require("path");
-// // const fs = require("fs");
-
-// // // Create a new meditation
-// // const createMeditation = async (req, res) => {
-// //   try {
-// //     const { title, description, duration } = req.body;
-// //     let image = null;
-
-// //     if (req.file) {
-// //       image = req.file.filename;
-// //     }
-
-// //     const meditation = new Meditation({
-// //       title,
-// //       description,
-// //       duration,
-// //       image,
-// //       createdBy: req.user.id, // assuming auth middleware sets req.user
-// //     });
-
-// //     await meditation.save();
-
-// //     res.status(201).json({ success: true, data: meditation });
-// //   } catch (error) {
-// //     res.status(500).json({ success: false, message: error.message });
-// //   }
-// // };
-
-// // // Get all meditations
-// // const getAllMeditations = async (req, res) => {
-// //   try {
-// //     const meditations = await Meditation.find().sort({ createdAt: -1 });
-// //     res.json({ success: true, data: meditations });
-// //   } catch (error) {
-// //     res.status(500).json({ success: false, message: error.message });
-// //   }
-// // };
-
-// // // Get meditation by ID
-// // const getMeditationById = async (req, res) => {
-// //   try {
-// //     const meditation = await Meditation.findById(req.params.id);
-// //     if (!meditation) {
-// //       return res.status(404).json({ success: false, message: "Meditation not found" });
-// //     }
-// //     res.json({ success: true, data: meditation });
-// //   } catch (error) {
-// //     res.status(500).json({ success: false, message: error.message });
-// //   }
-// // };
-
-// // // Update meditation by ID
-// // const updateMeditation = async (req, res) => {
-// //   try {
-// //     const { title, description, duration } = req.body;
-// //     const meditation = await Meditation.findById(req.params.id);
-
-// //     if (!meditation) {
-// //       return res.status(404).json({ success: false, message: "Meditation not found" });
-// //     }
-
-// //     if (req.file) {
-// //       // Delete old image if exists
-// //       if (meditation.image) {
-// //         const oldImagePath = path.join(__dirname, "../uploads/", meditation.image);
-// //         if (fs.existsSync(oldImagePath)) {
-// //           fs.unlinkSync(oldImagePath);
-// //         }
-// //       }
-// //       meditation.image = req.file.filename;
-// //     }
-
-// //     meditation.title = title || meditation.title;
-// //     meditation.description = description || meditation.description;
-// //     meditation.duration = duration || meditation.duration;
-
-// //     await meditation.save();
-
-// //     res.json({ success: true, data: meditation });
-// //   } catch (error) {
-// //     res.status(500).json({ success: false, message: error.message });
-// //   }
-// // };
-
-// // // Delete meditation by ID
-// // const deleteMeditation = async (req, res) => {
-// //   try {
-// //     const meditation = await Meditation.findById(req.params.id);
-// //     if (!meditation) {
-// //       return res.status(404).json({ success: false, message: "Meditation not found" });
-// //     }
-
-// //     if (meditation.image) {
-// //       const imagePath = path.join(__dirname, "../uploads/", meditation.image);
-// //       if (fs.existsSync(imagePath)) {
-// //         fs.unlinkSync(imagePath);
-// //       }
-// //     }
-
-// //     await meditation.remove();
-
-// //     res.json({ success: true, message: "Meditation deleted successfully" });
-// //   } catch (error) {
-// //     res.status(500).json({ success: false, message: error.message });
-// //   }
-// // };
-
-// // module.exports = {
-// //   createMeditation,
-// //   getAllMeditations,
-// //   getMeditationById,
-// //   updateMeditation,
-// //   deleteMeditation,
-// // };
-
-
-
 // const Meditation = require("../models/Meditation");
 // const path = require("path");
 // const fs = require("fs");
+
+// // Create a new meditation
+// const createMeditation = async (req, res) => {
+//   try {
+//     const { title, description, duration } = req.body;
+//     let image = null;
+
+//     if (req.file) {
+//       image = req.file.filename;
+//     }
+
+//     const meditation = new Meditation({
+//       title,
+//       description,
+//       duration,
+//       image,
+//       createdBy: req.user.id, // assuming auth middleware sets req.user
+//     });
+
+//     await meditation.save();
+
+//     res.status(201).json({ success: true, data: meditation });
+//   } catch (error) {
+//     res.status(500).json({ success: false, message: error.message });
+//   }
+// };
+
+// // Get all meditations
+// const getAllMeditations = async (req, res) => {
+//   try {
+//     const meditations = await Meditation.find().sort({ createdAt: -1 });
+//     res.json({ success: true, data: meditations });
+//   } catch (error) {
+//     res.status(500).json({ success: false, message: error.message });
+//   }
+// };
+
+// // Get meditation by ID
+// const getMeditationById = async (req, res) => {
+//   try {
+//     const meditation = await Meditation.findById(req.params.id);
+//     if (!meditation) {
+//       return res.status(404).json({ success: false, message: "Meditation not found" });
+//     }
+//     res.json({ success: true, data: meditation });
+//   } catch (error) {
+//     res.status(500).json({ success: false, message: error.message });
+//   }
+// };
+
+// // Update meditation by ID
+// const updateMeditation = async (req, res) => {
+//   try {
+//     const { title, description, duration } = req.body;
+//     const meditation = await Meditation.findById(req.params.id);
+
+//     if (!meditation) {
+//       return res.status(404).json({ success: false, message: "Meditation not found" });
+//     }
+
+//     if (req.file) {
+//       // Delete old image if exists
+//       if (meditation.image) {
+//         const oldImagePath = path.join(__dirname, "../uploads/", meditation.image);
+//         if (fs.existsSync(oldImagePath)) {
+//           fs.unlinkSync(oldImagePath);
+//         }
+//       }
+//       meditation.image = req.file.filename;
+//     }
+
+//     meditation.title = title || meditation.title;
+//     meditation.description = description || meditation.description;
+//     meditation.duration = duration || meditation.duration;
+
+//     await meditation.save();
+
+//     res.json({ success: true, data: meditation });
+//   } catch (error) {
+//     res.status(500).json({ success: false, message: error.message });
+//   }
+// };
+
+// // Delete meditation by ID
+// const deleteMeditation = async (req, res) => {
+//   try {
+//     const meditation = await Meditation.findById(req.params.id);
+//     if (!meditation) {
+//       return res.status(404).json({ success: false, message: "Meditation not found" });
+//     }
+
+//     if (meditation.image) {
+//       const imagePath = path.join(__dirname, "../uploads/", meditation.image);
+//       if (fs.existsSync(imagePath)) {
+//         fs.unlinkSync(imagePath);
+//       }
+//     }
+
+//     await meditation.remove();
+
+//     res.json({ success: true, message: "Meditation deleted successfully" });
+//   } catch (error) {
+//     res.status(500).json({ success: false, message: error.message });
+//   }
+// };
+
+// module.exports = {
+//   createMeditation,
+//   getAllMeditations,
+//   getMeditationById,
+//   updateMeditation,
+//   deleteMeditation,
+// };
+
+
+
+const Meditation = require("../models/Meditation");
+const path = require("path");
+const fs = require("fs");
 
 // // Create a new meditation
 // const createMeditation = async (req, res) => {
