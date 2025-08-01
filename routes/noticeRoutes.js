@@ -1,7 +1,7 @@
-// // routes/notice.routes.js
-// const express = require('express');
-// const router = express.Router();
-// const noticeController = require('../controllers/noticeController');
+// routes/notice.routes.js
+const express = require('express');
+const router = express.Router();
+const noticeController = require('../controllers/noticeController');
 
 
 // router.post('/', noticeController.createNotice);
@@ -10,4 +10,4 @@
 // router.put('/:id', noticeController.updateNotice);
 // router.delete('/:id', noticeController.deleteNotice);
 
-// module.exports = router;
+module.exports = router;
