@@ -160,18 +160,18 @@ const getAllJournals = async (req, res) => {
   }
 };
 
-// // Get a single journal by ID
-// const getJournalById = async (req, res) => {
-//   try {
-//     const journal = await Journal.findById(req.params.id);
-//     if (!journal) {
-//       return res.status(404).json({ success: false, message: "Journal not found" });
-//     }
-//     res.json({ success: true, data: journal });
-//   } catch (err) {
-//     res.status(500).json({ success: false, message: err.message });
-//   }
-// };
+// Get a single journal by ID
+const getJournalById = async (req, res) => {
+  try {
+    const journal = await Journal.findById(req.params.id);
+    if (!journal) {
+      return res.status(404).json({ success: false, message: "Journal not found" });
+    }
+    res.json({ success: true, data: journal });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
 
 // // Update a journal entry
 // const updateJournal = async (req, res) => {
