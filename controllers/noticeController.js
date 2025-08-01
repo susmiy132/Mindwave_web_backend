@@ -22,16 +22,16 @@ exports.getNotices = async (req, res) => {
   }
 };
 
-// // READ ONE
-// exports.getNoticeById = async (req, res) => {
-//   try {
-//     const notice = await Notice.findById(req.params.id);
-//     if (!notice) return res.status(404).json({ message: 'Notice not found' });
-//     res.status(200).json(notice);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
+// READ ONE
+exports.getNoticeById = async (req, res) => {
+  try {
+    const notice = await Notice.findById(req.params.id);
+    if (!notice) return res.status(404).json({ message: 'Notice not found' });
+    res.status(200).json(notice);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
 
 // // UPDATE
 // exports.updateNotice = async (req, res) => {
