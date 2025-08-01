@@ -199,15 +199,15 @@ const updateMeditation = async (req, res) => {
       return res.status(404).json({ success: false, message: "Meditation not found" });
     }
 
-//     if (req.file) {
-//       if (meditation.image) {
-//         const oldImagePath = path.join(__dirname, "../uploads/", meditation.image);
-//         if (fs.existsSync(oldImagePath)) {
-//           fs.unlinkSync(oldImagePath);
-//         }
-//       }
-//       meditation.image = req.file.filename;
-//     }
+    if (req.file) {
+      if (meditation.image) {
+        const oldImagePath = path.join(__dirname, "../uploads/", meditation.image);
+        if (fs.existsSync(oldImagePath)) {
+          fs.unlinkSync(oldImagePath);
+        }
+      }
+      meditation.image = req.file.filename;
+    }
 
     meditation.title = title || meditation.title;
     meditation.description = description || meditation.description;
