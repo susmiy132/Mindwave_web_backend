@@ -15,8 +15,8 @@ const {
 // Create journal (auth required, optional image upload)
 router.post("/", auth, upload.single("image"), createJournal);
 
-// // Get all journals (public)
-// router.get("/", auth, getAllJournals);
+// Get all journals (public)
+router.get("/", auth, getAllJournals);
 
 // // Get journal by id (public)
 // router.get("/:id", getJournalById);
