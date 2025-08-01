@@ -111,30 +111,30 @@ const Journal = require("../models/Journal");
 const Meditation = require("../models/Meditation");
 const Mood = require("../models/Mood");
 
-// // Add a new progress entry
-// exports.addProgress = async (req, res) => {
-//   try {
-//     const { percentage, calories, heartRate, steps, kcalBurn, habits } = req.body;
+// Add a new progress entry
+exports.addProgress = async (req, res) => {
+  try {
+    const { percentage, calories, heartRate, steps, kcalBurn, habits } = req.body;
 
-//     const progress = new Progress({
-//       userId: req.user._id,
-//       percentage,
-//       calories,
-//       heartRate,
-//       steps,
-//       kcalBurn,
-//       habits,
-//     });
+    const progress = new Progress({
+      userId: req.user._id,
+      percentage,
+      calories,
+      heartRate,
+      steps,
+      kcalBurn,
+      habits,
+    });
 
-//     const saved = await progress.save();
-//     res.status(201).json(saved);
-//   } catch (err) {
-//     if (err.name === "ValidationError") {
-//       return res.status(400).json({ message: err.message });
-//     }
-//     res.status(500).json({ message: err.message });
-//   }
-// };
+    const saved = await progress.save();
+    res.status(201).json(saved);
+  } catch (err) {
+    if (err.name === "ValidationError") {
+      return res.status(400).json({ message: err.message });
+    }
+    res.status(500).json({ message: err.message });
+  }
+};
 
 // // Get progress along with Journals, Meditations, and Moods
 // exports.getProgress = async (req, res) => {
