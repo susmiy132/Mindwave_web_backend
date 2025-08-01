@@ -203,28 +203,28 @@ const updateJournal = async (req, res) => {
   }
 };
 
-// // Delete a journal entry
-// const deleteJournal = async (req, res) => {
-//   try {
-//     const journal = await Journal.findById(req.params.id);
-//     if (!journal) {
-//       return res.status(404).json({ success: false, message: "Journal not found" });
-//     }
+// Delete a journal entry
+const deleteJournal = async (req, res) => {
+  try {
+    const journal = await Journal.findById(req.params.id);
+    if (!journal) {
+      return res.status(404).json({ success: false, message: "Journal not found" });
+    }
 
-//     // Delete the associated image if exists
-//     if (journal.image) {
-//       const imagePath = path.join(__dirname, "../uploads/", journal.image);
-//       if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
-//     }
+    // Delete the associated image if exists
+    if (journal.image) {
+      const imagePath = path.join(__dirname, "../uploads/", journal.image);
+      if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
+    }
 
-//     // Use findByIdAndDelete instead of journal.remove()
-//     await Journal.findByIdAndDelete(req.params.id);
+    // Use findByIdAndDelete instead of journal.remove()
+    await Journal.findByIdAndDelete(req.params.id);
 
-//     res.json({ success: true, message: "Journal deleted successfully" });
-//   } catch (err) {
-//     res.status(500).json({ success: false, message: err.message });
-//   }
-// };
+    res.json({ success: true, message: "Journal deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
 
 module.exports = {
   createJournal,
