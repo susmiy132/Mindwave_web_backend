@@ -141,24 +141,24 @@ const createJournal = async (req, res) => {
   }
 };
 
-// // Get all journal entries
-// // const getAllJournals = async (req, res) => {
-// //   try {
-// //     const journals = await Journal.find().sort({ createdAt: -1 });
-// //     res.json({ success: true, data: journals });
-// //   } catch (err) {
-// //     res.status(500).json({ success: false, message: err.message });
-// //   }
-// // };
-
+// Get all journal entries
 // const getAllJournals = async (req, res) => {
 //   try {
-//     const journals = await Journal.find({ createdBy: req.user.id }).sort({ createdAt: -1 });
-//     res.status(200).json({ journals });
-//   } catch (error) {
-//     res.status(500).json({ message: "Failed to fetch journals" });
+//     const journals = await Journal.find().sort({ createdAt: -1 });
+//     res.json({ success: true, data: journals });
+//   } catch (err) {
+//     res.status(500).json({ success: false, message: err.message });
 //   }
 // };
+
+const getAllJournals = async (req, res) => {
+  try {
+    const journals = await Journal.find({ createdBy: req.user.id }).sort({ createdAt: -1 });
+    res.status(200).json({ journals });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch journals" });
+  }
+};
 
 // // Get a single journal by ID
 // const getJournalById = async (req, res) => {
