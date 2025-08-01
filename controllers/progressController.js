@@ -136,30 +136,30 @@ exports.addProgress = async (req, res) => {
   }
 };
 
-// // Get progress along with Journals, Meditations, and Moods
-// exports.getProgress = async (req, res) => {
-//   try {
-//     const userId = req.user._id;
+// Get progress along with Journals, Meditations, and Moods
+exports.getProgress = async (req, res) => {
+  try {
+    const userId = req.user._id;
 
-//     // Optional date range filter
-//     const { startDate, endDate } = req.query;
-//     const dateFilter = {};
+    // Optional date range filter
+    const { startDate, endDate } = req.query;
+    const dateFilter = {};
 
-//     if (startDate && endDate) {
-//       const start = new Date(startDate);
-//       const end = new Date(endDate);
-//       dateFilter.createdAt = { $gte: start, $lte: end };
-//     }
+    if (startDate && endDate) {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      dateFilter.createdAt = { $gte: start, $lte: end };
+    }
 
-//     const [progress, journals, meditations, moods] = await Promise.all([
-//       Progress.find({ userId }).sort({ createdAt: -1 }),
-//       Journal.find({ userId, ...dateFilter }).sort({ createdAt: -1 }),
-//       Meditation.find({ userId, ...dateFilter }).sort({ createdAt: -1 }),
-//       Mood.find({ userId, ...dateFilter }).sort({ createdAt: -1 }),
-//     ]);
+    const [progress, journals, meditations, moods] = await Promise.all([
+      Progress.find({ userId }).sort({ createdAt: -1 }),
+      Journal.find({ userId, ...dateFilter }).sort({ createdAt: -1 }),
+      Meditation.find({ userId, ...dateFilter }).sort({ createdAt: -1 }),
+      Mood.find({ userId, ...dateFilter }).sort({ createdAt: -1 }),
+    ]);
 
-//     res.json({ progress, journals, meditations, moods });
-//   } catch (err) {
-//     res.status(500).json({ message: err.message });
-//   }
-// };
+    res.json({ progress, journals, meditations, moods });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
