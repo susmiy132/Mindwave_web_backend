@@ -18,8 +18,8 @@ router.post("/", auth, upload.single("image"), createJournal);
 // Get all journals (public)
 router.get("/", auth, getAllJournals);
 
-// // Get journal by id (public)
-// router.get("/:id", getJournalById);
+// Get journal by id (public)
+router.get("/:id", getJournalById);
 
 // // Update journal (auth required, optional image upload)
 // router.put("/:id", auth, upload.single("image"), updateJournal);
