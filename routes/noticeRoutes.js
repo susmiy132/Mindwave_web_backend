@@ -6,7 +6,7 @@ const noticeController = require('../controllers/noticeController');
 
 router.post('/', noticeController.createNotice);
 router.get('/', noticeController.getNotices);
-// router.get('/:id', noticeController.getNoticeById);
+router.get('/:id', noticeController.getNoticeById);
 // router.put('/:id', noticeController.updateNotice);
 // router.delete('/:id', noticeController.deleteNotice);
 
