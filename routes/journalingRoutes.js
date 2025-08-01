@@ -13,7 +13,7 @@ const {
 } = require("../controllers/journalingController");
 
 // Create journal (auth required, optional image upload)
-// router.post("/", auth, upload.single("image"), createJournal);
+router.post("/", auth, upload.single("image"), createJournal);
 
 // // Get all journals (public)
 // router.get("/", auth, getAllJournals);
