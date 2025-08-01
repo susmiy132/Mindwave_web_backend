@@ -173,35 +173,35 @@ const getJournalById = async (req, res) => {
   }
 };
 
-// // Update a journal entry
-// const updateJournal = async (req, res) => {
-//   try {
-//     const { title, content, mood } = req.body;
-//     const journal = await Journal.findById(req.params.id);
+// Update a journal entry
+const updateJournal = async (req, res) => {
+  try {
+    const { title, content, mood } = req.body;
+    const journal = await Journal.findById(req.params.id);
 
-//     if (!journal) {
-//       return res.status(404).json({ success: false, message: "Journal not found" });
-//     }
+    if (!journal) {
+      return res.status(404).json({ success: false, message: "Journal not found" });
+    }
 
-//     if (req.file) {
-//       if (journal.image) {
-//         const oldPath = path.join(__dirname, "../uploads/", journal.image);
-//         if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
-//       }
-//       journal.image = req.file.filename;
-//     }
+    // if (req.file) {
+    //   if (journal.image) {
+    //     const oldPath = path.join(__dirname, "../uploads/", journal.image);
+    //     if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
+    //   }
+    //   journal.image = req.file.filename;
+    // }
 
-//     journal.title = title || journal.title;
-//     journal.content = content || journal.content;
-//     journal.mood = mood || journal.mood;
+    journal.title = title || journal.title;
+    journal.content = content || journal.content;
+    journal.mood = mood || journal.mood;
 
-//     await journal.save();
+    await journal.save();
 
-//     res.json({ success: true, data: journal });
-//   } catch (err) {
-//     res.status(500).json({ success: false, message: err.message });
-//   }
-// };
+    res.json({ success: true, data: journal });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
 
 // // Delete a journal entry
 // const deleteJournal = async (req, res) => {
