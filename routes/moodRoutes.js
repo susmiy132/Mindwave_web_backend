@@ -17,6 +17,6 @@ const { createMood, getMoods } = require("../controllers/moodController");
 // const authMiddleware = require("../middlewares/authmiddleware"); // Optional if user auth is needed
 
 router.post("/", /*authMiddleware,*/ createMood);
-// router.get("/", /*authMiddleware,*/ getMoods);
+router.get("/", /*authMiddleware,*/ getMoods);
 
 module.exports = router;
