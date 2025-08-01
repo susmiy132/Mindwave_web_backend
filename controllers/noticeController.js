@@ -1,5 +1,5 @@
-// // controllers/notice.controller.js
-// const Notice = require('../models/Notice');
+// controllers/notice.controller.js
+const Notice = require('../models/Notice');
 
 // // CREATE
 // exports.createNotice = async (req, res) => {
