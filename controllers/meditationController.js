@@ -189,15 +189,15 @@ const getMeditationById = async (req, res) => {
   }
 };
 
-// // Update meditation by ID
-// const updateMeditation = async (req, res) => {
-//   try {
-//     const { title, description, duration } = req.body;
-//     const meditation = await Meditation.findById(req.params.id);
+// Update meditation by ID
+const updateMeditation = async (req, res) => {
+  try {
+    const { title, description, duration } = req.body;
+    const meditation = await Meditation.findById(req.params.id);
 
-//     if (!meditation) {
-//       return res.status(404).json({ success: false, message: "Meditation not found" });
-//     }
+    if (!meditation) {
+      return res.status(404).json({ success: false, message: "Meditation not found" });
+    }
 
 //     if (req.file) {
 //       if (meditation.image) {
@@ -209,23 +209,23 @@ const getMeditationById = async (req, res) => {
 //       meditation.image = req.file.filename;
 //     }
 
-//     meditation.title = title || meditation.title;
-//     meditation.description = description || meditation.description;
-//     meditation.duration = duration || meditation.duration;
+    meditation.title = title || meditation.title;
+    meditation.description = description || meditation.description;
+    meditation.duration = duration || meditation.duration;
 
-//     await meditation.save();
+    await meditation.save();
 
-//     res.json({
-//       success: true,
-//       data: {
-//         ...meditation._doc,
-//         image: meditation.image ? `${req.protocol}://${req.get("host")}/uploads/${meditation.image}` : null,
-//       },
-//     });
-//   } catch (error) {
-//     res.status(500).json({ success: false, message: error.message });
-//   }
-// };
+    res.json({
+      success: true,
+      data: {
+        ...meditation._doc,
+        image: meditation.image ? `${req.protocol}://${req.get("host")}/uploads/${meditation.image}` : null,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
 
 // // Delete meditation by ID
 // const deleteMeditation = async (req, res) => {
