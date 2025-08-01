@@ -74,71 +74,71 @@ exports.register = async (req, res) => {
   }
 };
 
-// // Login
-// exports.login = async (req, res) => {
-//   const { email, password } = req.body;
+// Login
+exports.login = async (req, res) => {
+  const { email, password } = req.body;
 
-//   // Validation
-//   if(!email || !password) {
-//     return res.status(400).json(
-//       {
-//         "success": false,
-//         "message": "Mising faled"
-//       }
-//     )
-//   }
+  // Validation
+  if(!email || !password) {
+    return res.status(400).json(
+      {
+        "success": false,
+        "message": "Mising faled"
+      }
+    )
+  }
 
-//   try {
-//     const getUser = await User.findOne(
-//       {"email": email }
-//     );
+  try {
+    const getUser = await User.findOne(
+      {"email": email }
+    );
 
-//     if (!getUser){
-//       return res.status(400).json(
-//         {
-//           "success": false,
-//           "message": "User not found"
-//         }
-//       )
-//     }
+    if (!getUser){
+      return res.status(400).json(
+        {
+          "success": false,
+          "message": "User not found"
+        }
+      )
+    }
     
-//     // Check for password
-//     const passwordCheck = await bcrypt.compare(password, getUser.password);
-//     if (!passwordCheck) {
-//       return res.status(400).json(
-//         { "success": false,
-//           "message": 'Invalid credentials' 
-//         }
-//       );
-//     }
+    // Check for password
+    const passwordCheck = await bcrypt.compare(password, getUser.password);
+    if (!passwordCheck) {
+      return res.status(400).json(
+        { "success": false,
+          "message": 'Invalid credentials' 
+        }
+      );
+    }
 
-//     // jwt token
-//     const payload = {
-//       "_id": getUser._id,
-//       "email": getUser.email,
-//       "fullname": getUser.fullName,
-//       "phone": getUser.phone,
-//       "password": getUser.password
-//     }
-//     const token = jwt.sign(payload, process.env.SECRET, {expiresIn: '7d'})
-//     return res.status(200).json(
-//       {
-//         "success": true,
-//         "message": "Login Successful",
-//         "data": {
-//         "_id": getUser._id,
-//         "fullName": getUser.fullName,
-//         "email": getUser.email,
-//       },
-//       token: generateToken(getUser._id),
-//       }
-//     )
-//   } catch (error) {
-//     return res.status(500).json(
-//       {"success": false, "message": 'Server error' }
-//     );
-//   }
-// };
+    // jwt token
+    const payload = {
+      "_id": getUser._id,
+      "email": getUser.email,
+      "fullname": getUser.fullName,
+      "phone": getUser.phone,
+      "password": getUser.password
+    }
+    const token = jwt.sign(payload, process.env.SECRET, {expiresIn: '7d'})
+    return res.status(200).json(
+      {
+        "success": true,
+        "message": "Login Successful",
+        "data": {
+        "_id": getUser._id,
+        "fullName": getUser.fullName,
+        "email": getUser.email,
+      },
+      token: generateToken(getUser._id),
+      }
+    )
+  } catch (error) {
+    return res.status(500).json(
+      {"success": false, "message": 'Server error' }
+    );
+  }
+};
 
 
 // const transporter = nodemailer.createTransport(
