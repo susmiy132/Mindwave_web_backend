@@ -17,7 +17,7 @@ const {
 router.post("/", authMiddleware, upload.single("image"), createMeditation);
 
 // Get all meditations (public)
-// router.get("/", getAllMeditations);
+router.get("/", getAllMeditations);
 
 // // Get meditation by id (public)
 // router.get("/:id", getMeditationById);
