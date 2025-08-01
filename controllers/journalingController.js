@@ -183,13 +183,13 @@ const updateJournal = async (req, res) => {
       return res.status(404).json({ success: false, message: "Journal not found" });
     }
 
-    // if (req.file) {
-    //   if (journal.image) {
-    //     const oldPath = path.join(__dirname, "../uploads/", journal.image);
-    //     if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
-    //   }
-    //   journal.image = req.file.filename;
-    // }
+    if (req.file) {
+      if (journal.image) {
+        const oldPath = path.join(__dirname, "../uploads/", journal.image);
+        if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
+      }
+      journal.image = req.file.filename;
+    }
 
     journal.title = title || journal.title;
     journal.content = content || journal.content;
