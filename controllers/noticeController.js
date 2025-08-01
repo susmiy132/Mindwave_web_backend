@@ -12,15 +12,15 @@ exports.createNotice = async (req, res) => {
   }
 };
 
-// // READ ALL
-// exports.getNotices = async (req, res) => {
-//   try {
-//     const notices = await Notice.find();
-//     res.status(200).json(notices);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
+// READ ALL
+exports.getNotices = async (req, res) => {
+  try {
+    const notices = await Notice.find();
+    res.status(200).json(notices);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
 
 // // READ ONE
 // exports.getNoticeById = async (req, res) => {
