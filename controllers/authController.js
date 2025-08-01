@@ -180,16 +180,16 @@ exports.sendResetLink = async = async (req, res) => {
     }
 }
 
-// exports.resetPassword = async (req, res) => {
-//     const { token } = req.params
-//     const { password } = req.body
-//     try{
-//         const decoded = jwt.verify(token, process.env.SECRET)
-//         const hased = await bcrypt.hash(password, 10)
-//         await User.findByIdAndUpdate(decoded.id, {password: hased})
-//         return res.status(200).json({success: true, message:"password updated"})
-//     }
-//     catch(err) {
-//         return res.status(500).json({success: false, message:"Server error/Token invalid"})
-//     }
-// }
+exports.resetPassword = async (req, res) => {
+    const { token } = req.params
+    const { password } = req.body
+    try{
+        const decoded = jwt.verify(token, process.env.SECRET)
+        const hased = await bcrypt.hash(password, 10)
+        await User.findByIdAndUpdate(decoded.id, {password: hased})
+        return res.status(200).json({success: true, message:"password updated"})
+    }
+    catch(err) {
+        return res.status(500).json({success: false, message:"Server error/Token invalid"})
+    }
+}
