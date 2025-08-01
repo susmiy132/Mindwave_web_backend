@@ -33,16 +33,16 @@ exports.getNoticeById = async (req, res) => {
   }
 };
 
-// // UPDATE
-// exports.updateNotice = async (req, res) => {
-//   try {
-//     const notice = await Notice.findByIdAndUpdate(req.params.id, req.body, { new: true });
-//     if (!notice) return res.status(404).json({ message: 'Notice not found' });
-//     res.status(200).json(notice);
-//   } catch (err) {
-//     res.status(400).json({ error: err.message });
-//   }
-// };
+// UPDATE
+exports.updateNotice = async (req, res) => {
+  try {
+    const notice = await Notice.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!notice) return res.status(404).json({ message: 'Notice not found' });
+    res.status(200).json(notice);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
 
 // // DELETE
 // exports.deleteNotice = async (req, res) => {
