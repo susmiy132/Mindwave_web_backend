@@ -115,31 +115,31 @@ const Journal = require("../models/Journal");
 const path = require("path");
 const fs = require("fs");
 
-// // Create a new journal entry
-// const createJournal = async (req, res) => {
-//   try {
-//     const { title, content, mood } = req.body;
+// Create a new journal entry
+const createJournal = async (req, res) => {
+  try {
+    const { title, content, mood } = req.body;
 
-//     let image = null;
-//     if (req.file) {
-//       image = req.file.filename;
-//     }
+    let image = null;
+    if (req.file) {
+      image = req.file.filename;
+    }
 
-//     const journal = new Journal({
-//       title,
-//       content,
-//       mood,
-//       image,
-//       createdBy: req.user.id, // assuming auth middleware sets req.user
-//     });
+    const journal = new Journal({
+      title,
+      content,
+      mood,
+      image,
+      createdBy: req.user.id, // assuming auth middleware sets req.user
+    });
 
-//     await journal.save();
+    await journal.save();
 
-//     res.status(201).json({ success: true, data: journal });
-//   } catch (err) {
-//     res.status(500).json({ success: false, message: err.message });
-//   }
-// };
+    res.status(201).json({ success: true, data: journal });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
 
 // // Get all journal entries
 // // const getAllJournals = async (req, res) => {
