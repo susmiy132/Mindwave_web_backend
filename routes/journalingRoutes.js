@@ -25,6 +25,6 @@ router.get("/:id", getJournalById);
 router.put("/:id", auth, upload.single("image"), updateJournal);
 
 // Delete journal (auth required)
-// router.delete("/:id", auth, deleteJournal);
+router.delete("/:id", auth, deleteJournal);
 
 module.exports = router;
