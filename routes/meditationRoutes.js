@@ -26,6 +26,6 @@ router.get("/:id", getMeditationById);
 router.put("/:id", authMiddleware, upload.single("image"), updateMeditation);
 
 // // Delete meditation (auth required)
-// router.delete("/:id", authMiddleware, deleteMeditation);
+router.delete("/:id", authMiddleware, deleteMeditation);
 
 module.exports = router;
