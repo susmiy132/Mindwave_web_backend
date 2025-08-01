@@ -258,11 +258,11 @@ const deleteMeditation = async (req, res) => {
   }
 };
 
-// module.exports = {
-//   createMeditation,
-//   getAllMeditations,
-//   getMeditationById,
-//   updateMeditation,
-//   deleteMeditation,
-// };
+module.exports = {
+  createMeditation,
+  getAllMeditations,
+  getMeditationById,
+  updateMeditation,
+  deleteMeditation,
+};
 
