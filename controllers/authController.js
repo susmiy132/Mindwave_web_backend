@@ -1,78 +1,78 @@
-// const User = require('../models/User');
-// const bcrypt = require('bcryptjs');
-// const jwt = require('jsonwebtoken');
-// const generateToken = require('../utils/generateToken');
+const User = require('../models/User');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const generateToken = require('../utils/generateToken');
 
-// const nodemailer = require("nodemailer")
+const nodemailer = require("nodemailer")
 
 
-// // Register
-// exports.register = async (req, res) => {
-//   // Get the required field from body
-//   const { fullName, email, phone, password } = req.body;
+// Register
+exports.register = async (req, res) => {
+  // Get the required field from body
+  const { fullName, email, phone, password } = req.body;
 
-//   const userAlreadyExists = await User.findOne({email})
-//   // Validate required fields
-//   if (!fullName || !email || !phone || !password) {
-//     return res.status(400).json(
-//       { 
-//         "success" : false,
-//         "message": "All fields are required" 
-//       }
-//     );
-//   }
+  const userAlreadyExists = await User.findOne({email})
+  // Validate required fields
+  if (!fullName || !email || !phone || !password) {
+    return res.status(400).json(
+      { 
+        "success" : false,
+        "message": "All fields are required" 
+      }
+    );
+  }
 
-//   // check if user exists
-//   try
-//   {
-//     const existingUser = await User.findOne(
-//       { 
-//         $or: [{email: email}, ] 
+  // check if user exists
+  try
+  {
+    const existingUser = await User.findOne(
+      { 
+        $or: [{email: email}, ] 
 
-//       }
-//     );
-//     if (existingUser) {
-//       return res.status(400).json({"success" : false, "message": "User already exists" });
-//     }
+      }
+    );
+    if (existingUser) {
+      return res.status(400).json({"success" : false, "message": "User already exists" });
+    }
 
-//     // Hash the password
-//     const hashedPassword = await bcrypt.hash(password, 10);
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-//     // Create the instance of user
-//     const newUser = new User(
-//       {
-//         fullName,
-//         email,
-//         phone,
-//         password: hashedPassword,
-//         profileImage: "", // or set a default string if image is not used
-//       }
-//     );
+    // Create the instance of user
+    const newUser = new User(
+      {
+        fullName,
+        email,
+        phone,
+        password: hashedPassword,
+        profileImage: "", // or set a default string if image is not used
+      }
+    );
 
-//     // save the user data
-//     await newUser.save();
+    // save the user data
+    await newUser.save();
 
-//     return res.status(201).json({ 
-//       "success":true, 
-//       "message": "User registered successfully",
-//       "data": {
-//         "_id": newUser.email,
-//         "fullname": newUser.fullName,
-//       },
-//       "token": generateToken(newUser._id),
-//      });
+    return res.status(201).json({ 
+      "success":true, 
+      "message": "User registered successfully",
+      "data": {
+        "_id": newUser.email,
+        "fullname": newUser.fullName,
+      },
+      "token": generateToken(newUser._id),
+     });
 
-//   } catch (error) {
-//     return res.status(500).json(
-//       {
-//         "success" : false,
-//         "message": "Server error"
-//       }
-//     )
-//     // console.error("Registration error:", error.message);
-//     // res.status(500).json({ message: "Server error" });
-//   }
-// };
+  } catch (error) {
+    return res.status(500).json(
+      {
+        "success" : false,
+        "message": "Server error"
+      }
+    )
+    // console.error("Registration error:", error.message);
+    // res.status(500).json({ message: "Server error" });
+  }
+};
 
 // // Login
 // exports.login = async (req, res) => {
