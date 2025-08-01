@@ -169,25 +169,25 @@ const getAllMeditations = async (req, res) => {
   }
 };
 
-// // Get meditation by ID
-// const getMeditationById = async (req, res) => {
-//   try {
-//     const meditation = await Meditation.findById(req.params.id);
-//     if (!meditation) {
-//       return res.status(404).json({ success: false, message: "Meditation not found" });
-//     }
+// Get meditation by ID
+const getMeditationById = async (req, res) => {
+  try {
+    const meditation = await Meditation.findById(req.params.id);
+    if (!meditation) {
+      return res.status(404).json({ success: false, message: "Meditation not found" });
+    }
 
-//     res.json({
-//       success: true,
-//       data: {
-//         ...meditation._doc,
-//         image: meditation.image ? `${req.protocol}://${req.get("host")}/uploads/${meditation.image}` : null,
-//       },
-//     });
-//   } catch (error) {
-//     res.status(500).json({ success: false, message: error.message });
-//   }
-// };
+    res.json({
+      success: true,
+      data: {
+        ...meditation._doc,
+        image: meditation.image ? `${req.protocol}://${req.get("host")}/uploads/${meditation.image}` : null,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
 
 // // Update meditation by ID
 // const updateMeditation = async (req, res) => {
