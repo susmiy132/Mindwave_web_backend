@@ -121,37 +121,37 @@ const Meditation = require("../models/Meditation");
 const path = require("path");
 const fs = require("fs");
 
-// // Create a new meditation
-// const createMeditation = async (req, res) => {
-//   try {
-//     const { title, description, duration } = req.body;
-//     let image = null;
+// Create a new meditation
+const createMeditation = async (req, res) => {
+  try {
+    const { title, description, duration } = req.body;
+    let image = null;
 
-//     if (req.file) {
-//       image = req.file.filename;
-//     }
+    if (req.file) {
+      image = req.file.filename;
+    }
 
-//     const meditation = new Meditation({
-//       title,
-//       description,
-//       duration,
-//       image,
-//       createdBy: req.user.id,
-//     });
+    const meditation = new Meditation({
+      title,
+      description,
+      duration,
+      image,
+      createdBy: req.user.id,
+    });
 
-//     await meditation.save();
+    await meditation.save();
 
-//     res.status(201).json({
-//       success: true,
-//       data: {
-//         ...meditation._doc,
-//         image: image ? `${req.protocol}://${req.get("host")}/uploads/${image}` : null,
-//       },
-//     });
-//   } catch (error) {
-//     res.status(500).json({ success: false, message: error.message });
-//   }
-// };
+    res.status(201).json({
+      success: true,
+      data: {
+        ...meditation._doc,
+        image: image ? `${req.protocol}://${req.get("host")}/uploads/${image}` : null,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
 
 // // Get all meditations
 // const getAllMeditations = async (req, res) => {
