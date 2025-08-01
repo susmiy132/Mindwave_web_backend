@@ -23,7 +23,7 @@ router.get("/", getAllMeditations);
 router.get("/:id", getMeditationById);
 
 // // Update meditation (auth required, single image upload)
-// router.put("/:id", authMiddleware, upload.single("image"), updateMeditation);
+router.put("/:id", authMiddleware, upload.single("image"), updateMeditation);
 
 // // Delete meditation (auth required)
 // router.delete("/:id", authMiddleware, deleteMeditation);
